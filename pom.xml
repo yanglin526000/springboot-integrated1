@@ -69,6 +69,13 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
+        <!-- DevTools热部署，optional=true, 依赖不会传递, 该项目依赖DevTools; 之后依赖boot项目的项目如果想要使用DevTools,需要重新引入 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
     </dependencies>
 
     <build>
