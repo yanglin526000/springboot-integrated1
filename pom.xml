@@ -54,7 +54,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
-            <scope>provided</scope>
+<!--            <scope>provided</scope>-->
         </dependency>
 
         <!-- SpringBoot Test -->
@@ -71,11 +71,11 @@
         </dependency>
 
         <!-- DevTools热部署，optional=true, 依赖不会传递, 该项目依赖DevTools; 之后依赖boot项目的项目如果想要使用DevTools,需要重新引入 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <optional>true</optional>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-devtools</artifactId>-->
+<!--            <optional>true</optional>-->
+<!--        </dependency>-->
 
         <!-- swagger2 -->
         <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
