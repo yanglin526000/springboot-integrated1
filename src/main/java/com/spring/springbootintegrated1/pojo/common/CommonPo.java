@@ -58,7 +58,7 @@ public class CommonPo implements Serializable {
      * @field createTime
      */
     @ApiModelProperty(value = "创建时间", hidden = true)
-    @Column(name = "create_time", columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间'")
+    @Column(name = "create_time", columnDefinition = "DATETIME COMMENT '创建时间'")
     private Date createTime;
 
     /**
@@ -66,7 +66,7 @@ public class CommonPo implements Serializable {
      * @field updateTime
      */
     @ApiModelProperty(value = "更新时间", hidden = true)
-    @Column(name = "update_time", columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间'")
+    @Column(name = "update_time", columnDefinition = "DATETIME COMMENT '更新时间'")
     private Date updateTime;
 
     /**
