@@ -3,6 +3,7 @@ package com.spring.springbootintegrated1.pojo;
 import com.spring.springbootintegrated1.pojo.common.CommonPo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,10 +17,11 @@ import java.util.Date;
  * <p>
  * 创建时间: 2019-11-19 10:12
  * </p>
- * 
+ *
  * @author yanglin
  */
 @ApiModel(value = "扫描切片信息")
+@Data
 @Entity
 @Table(name = "biopsy")
 public class Biopsy extends CommonPo {
@@ -119,7 +121,7 @@ public class Biopsy extends CommonPo {
     private Date matchedTime;
 
     /**
-     * @description 文件是否可疑(0,1)
+     * @description 文件是否可疑(0, 1)
      * @field isDoubtfulFile
      */
     @ApiModelProperty(value = "文件是否可疑(0,1)")
@@ -189,165 +191,5 @@ public class Biopsy extends CommonPo {
     @ApiModelProperty(value = "切片大小")
     @Column(name = "file_size", columnDefinition = "INT UNSIGNED COMMENT '切片大小'", nullable = false)
     private Long fileSize;
-
-    public Integer getUploadStatus() {
-        return uploadStatus;
-    }
-
-    public void setUploadStatus(Integer uploadStatus) {
-        this.uploadStatus = uploadStatus;
-    }
-
-    public Integer getMatchStatus() {
-        return matchStatus;
-    }
-
-    public void setMatchStatus(Integer matchStatus) {
-        this.matchStatus = matchStatus;
-    }
-
-    public Double getProgress() {
-        return progress;
-    }
-
-    public void setProgress(Double progress) {
-        this.progress = progress;
-    }
-
-    public Long getBiopsyHistoryId() {
-        return biopsyHistoryId;
-    }
-
-    public void setBiopsyHistoryId(Long biopsyHistoryId) {
-        this.biopsyHistoryId = biopsyHistoryId;
-    }
-
-    public Long getInstitutionId() {
-        return institutionId;
-    }
-
-    public void setInstitutionId(Long institutionId) {
-        this.institutionId = institutionId;
-    }
-
-    public String getNewFilename() {
-        return newFilename;
-    }
-
-    public void setNewFilename(String newFilename) {
-        this.newFilename = newFilename;
-    }
-
-    public String getOriginFilename() {
-        return originFilename;
-    }
-
-    public void setOriginFilename(String originFilename) {
-        this.originFilename = originFilename;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public Date getUploadedTime() {
-        return uploadedTime;
-    }
-
-    public void setUploadedTime(Date uploadedTime) {
-        this.uploadedTime = uploadedTime;
-    }
-
-    public Date getMatchedTime() {
-        return matchedTime;
-    }
-
-    public void setMatchedTime(Date matchedTime) {
-        this.matchedTime = matchedTime;
-    }
-
-    public Integer getIsDoubtfulFile() {
-        return isDoubtfulFile;
-    }
-
-    public void setIsDoubtfulFile(Integer isDoubtfulFile) {
-        this.isDoubtfulFile = isDoubtfulFile;
-    }
-
-    public Integer getLevel() {
-        return level;
-    }
-
-    public void setLevel(Integer level) {
-        this.level = level;
-    }
-
-    public Double getWidth() {
-        return width;
-    }
-
-    public void setWidth(Double width) {
-        this.width = width;
-    }
-
-    public Double getHeight() {
-        return height;
-    }
-
-    public void setHeight(Double height) {
-        this.height = height;
-    }
-
-    public Long getDiagnosisId() {
-        return diagnosisId;
-    }
-
-    public void setDiagnosisId(Long diagnosisId) {
-        this.diagnosisId = diagnosisId;
-    }
-
-    public String getLabelUrl() {
-        return labelUrl;
-    }
-
-    public void setLabelUrl(String labelUrl) {
-        this.labelUrl = labelUrl;
-    }
-
-    public String getPreviewUrl() {
-        return previewUrl;
-    }
-
-    public void setPreviewUrl(String previewUrl) {
-        this.previewUrl = previewUrl;
-    }
-
-    public Integer getIsAddedBiopsy() {
-        return isAddedBiopsy;
-    }
-
-    public void setIsAddedBiopsy(Integer isAddedBiopsy) {
-        this.isAddedBiopsy = isAddedBiopsy;
-    }
-
-    public Long getFileSize() {
-        return fileSize;
-    }
-
-    public void setFileSize(Long fileSize) {
-        this.fileSize = fileSize;
-    }
 
 }

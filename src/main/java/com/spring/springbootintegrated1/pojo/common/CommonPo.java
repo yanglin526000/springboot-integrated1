@@ -2,6 +2,7 @@ package com.spring.springbootintegrated1.pojo.common;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -14,10 +15,11 @@ import java.util.Date;
  * <p>
  * 创建时间: 2019-11-15 09:38
  * </p>
- * 
+ *
  * @author yanglin
  */
 @ApiModel
+@Data
 @MappedSuperclass
 public class CommonPo implements Serializable {
 
@@ -84,61 +86,5 @@ public class CommonPo implements Serializable {
     @ApiModelProperty(value = "是否删除", hidden = true)
     @Column(name = "is_delete", columnDefinition = "TINYINT(2) DEFAULT 0 COMMENT '是否删除'", nullable = false)
     private Byte isDelete;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getCreateUserId() {
-        return createUserId;
-    }
-
-    public void setCreateUserId(Long createUserId) {
-        this.createUserId = createUserId;
-    }
-
-    public Long getUpdateUserId() {
-        return updateUserId;
-    }
-
-    public void setUpdateUserId(Long updateUserId) {
-        this.updateUserId = updateUserId;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
-
-    public Byte getIsDelete() {
-        return isDelete;
-    }
-
-    public void setIsDelete(Byte isDelete) {
-        this.isDelete = isDelete;
-    }
 
 }

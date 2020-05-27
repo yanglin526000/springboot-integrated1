@@ -3,6 +3,7 @@ package com.spring.springbootintegrated1.pojo;
 import com.spring.springbootintegrated1.pojo.common.CommonPo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,10 +16,11 @@ import javax.persistence.Table;
  * <p>
  * 创建时间: 2019-12-04 17:50
  * </p>
- * 
+ *
  * @author yanglin
  */
 @ApiModel(value = "通讯录表")
+@Data
 @Entity
 @Table(name = "contract")
 @org.hibernate.annotations.Table(appliesTo = "contract", comment = "通讯录表")
@@ -77,53 +79,5 @@ public class Contract extends CommonPo {
     @ApiModelProperty(value = "是否收藏")
     @Column(name = "collection", columnDefinition = "INT COMMENT '是否收藏'")
     private Integer collection;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getTelNum() {
-        return telNum;
-    }
-
-    public void setTelNum(String telNum) {
-        this.telNum = telNum;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
-    }
-
-    public Integer getCollection() {
-        return collection;
-    }
-
-    public void setCollection(Integer collection) {
-        this.collection = collection;
-    }
 
 }

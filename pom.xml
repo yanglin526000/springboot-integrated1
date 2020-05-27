@@ -54,7 +54,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
-<!--            <scope>provided</scope>-->
+            <!--            <scope>provided</scope>-->
         </dependency>
 
         <!-- SpringBoot Test -->
@@ -71,11 +71,11 @@
         </dependency>
 
         <!-- DevTools热部署，optional=true, 依赖不会传递, 该项目依赖DevTools; 之后依赖boot项目的项目如果想要使用DevTools,需要重新引入 -->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-devtools</artifactId>-->
-<!--            <optional>true</optional>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-devtools</artifactId>-->
+        <!--            <optional>true</optional>-->
+        <!--        </dependency>-->
 
         <!-- swagger2 -->
         <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
@@ -150,6 +150,16 @@
             <artifactId>mapper</artifactId>
             <version>4.1.5</version>
         </dependency>
+
+        <!-- Lombok -->
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.12</version>
+            <scope>provided</scope>
+        </dependency>
+
 
     </dependencies>
 
