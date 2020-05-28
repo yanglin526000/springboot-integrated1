@@ -179,7 +179,7 @@
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>3.1.1</version>
                 <configuration>
-                    <configLocation>\src\main\resources\check-style\checks.xml</configLocation>
+                    <configLocation>\src\main\resources\check-style\checks-windows.xml</configLocation>
                     <encoding>UTF-8</encoding>
                     <!-- <argLine>-Dfile.encoding=UTF-8</argLine> -->
                 </configuration>

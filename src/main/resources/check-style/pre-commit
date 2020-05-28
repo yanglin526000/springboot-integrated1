@@ -1,0 +1,19 @@
+#!/bin/sh
+#execute shell before commit,check the code
+mvn checkstyle:check
+
+#recieve the  execute result
+#output the result ,if the result less or equal 0 ,it proves this project has bugs,otherwise don't.
+#如果有bug会返回非0值，如果没有bug会返回0
+result=$?
+
+echo $result
+
+if [ $result -ne 0 ] #这里通过判断返回值来判断项目是否构建成功  -ne 表示不等于
+then
+    echo "REGRETFUL! BUILD FAILURE"
+    exit 1           #返回非0结果值，表示提交失败
+else
+    echo "CONGRATURATION! BUILD SUCCESS"
+    exit 0             #返回0结果值，表示提交成功  (没有出现bug)
+fi
