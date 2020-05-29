@@ -1,4 +1,4 @@
-package com.spring.springbootintegrated1.config;
+package com.spring.springbootintegrated1.config.swagger2;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
