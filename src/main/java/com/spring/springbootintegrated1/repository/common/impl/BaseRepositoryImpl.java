@@ -43,16 +43,11 @@ public class BaseRepositoryImpl<T> implements BaseRepository<T> {
             Object idO = fId.get(t);
             Date now = new Date();
             if (idO == null) {
-                // 新增设置-新增和更新时间
-                o = t.getClass().newInstance();
-                ParamUtil.putField(o, "createTime", now);
-                ParamUtil.putField(o, "updateTime", now);
-                // 设置为isDelete为0，存在标志
-                ParamUtil.putField(o, "isDelete", ConstantUtil.IS_NOT_DELETE);
+                // 新增-初始化实例对象
+                o = t.getClass().getDeclaredConstructor().newInstance();
             } else {
-                // 修改设置-更新时间
+                // 修改-获取实例对象
                 o = entityManager.find(t.getClass(), idO);
-                ParamUtil.putField(o, "updateTime", now);
             }
             List<Field> fs = new ArrayList<>(Arrays.asList(t.getClass().getDeclaredFields()));
             List<Field> fsP = Arrays.asList(t.getClass().getSuperclass().getDeclaredFields());

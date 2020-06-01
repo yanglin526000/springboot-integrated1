@@ -1,8 +1,11 @@
 package com.spring.springbootintegrated1.pojo.common;
 
+import com.spring.springbootintegrated1.utils.ConstantUtil;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -60,6 +63,7 @@ public class CommonPo implements Serializable {
      * @field createTime
      */
     @ApiModelProperty(value = "创建时间", hidden = true)
+    @CreationTimestamp
     @Column(name = "create_time", columnDefinition = "DATETIME COMMENT '创建时间'")
     private Date createTime;
 
@@ -68,6 +72,7 @@ public class CommonPo implements Serializable {
      * @field updateTime
      */
     @ApiModelProperty(value = "更新时间", hidden = true)
+    @UpdateTimestamp
     @Column(name = "update_time", columnDefinition = "DATETIME COMMENT '更新时间'")
     private Date updateTime;
 
@@ -80,11 +85,11 @@ public class CommonPo implements Serializable {
     private String remark;
 
     /**
-     * @description 是否删除
+     * @description 是否删除，并设置默认未删除值ConstantUtil.IS_NOT_DELETE
      * @field isDelete
      */
     @ApiModelProperty(value = "是否删除", hidden = true)
     @Column(name = "is_delete", columnDefinition = "TINYINT(2) DEFAULT 0 COMMENT '是否删除'", nullable = false)
-    private Byte isDelete;
+    private Byte isDelete = ConstantUtil.IS_NOT_DELETE;
 
 }

@@ -71,8 +71,8 @@ public class MapBeanUtil {
      * @author yanglin
      */
     public static Object mapToBean(Map<String, Object> map, Class clazz)
-            throws InstantiationException, IllegalAccessException, NoSuchFieldException, SecurityException {
-        Object object = clazz.newInstance();
+            throws Exception {
+        Object object = clazz.getDeclaredConstructor().newInstance();
         for (String key : map.keySet()) {
             Field temFiels = clazz.getDeclaredField(key);
             temFiels.setAccessible(true);
