@@ -24,6 +24,15 @@ import java.util.Collections;
  */
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 
+    /**
+     * <p>
+     * Constructor Method
+     * </p>
+     *
+     * @param authenticationManager AuthenticationManager
+     * @author yanglin
+     * @date 2020-06-11 20:54:21
+     */
     public JWTAuthorizationFilter(AuthenticationManager authenticationManager) {
         super(authenticationManager);
     }
@@ -55,7 +64,7 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
      *
      * @param tokenHeader Header中的Token
      * @return org.springframework.security.authentication.UsernamePasswordAuthenticationToken
-     * @throws TokenIsExpiredException
+     * @throws TokenIsExpiredException TokenIsExpired
      */
     private UsernamePasswordAuthenticationToken getAuthentication(String tokenHeader) throws TokenIsExpiredException {
         String token = tokenHeader.replace(JwtTokenUtils.TOKEN_PREFIX, "");
