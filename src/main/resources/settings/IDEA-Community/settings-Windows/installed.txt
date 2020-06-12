@@ -1,3 +1,5 @@
 CheckStyle-IDEA
 Lombook Plugin
+com.dubreuia
+google-java-format
 org.jetbrains.kotlin
