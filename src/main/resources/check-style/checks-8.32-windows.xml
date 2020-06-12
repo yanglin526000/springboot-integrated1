@@ -73,7 +73,7 @@
             <property name="allowByTailComment" value="true"/>
             <property name="allowNonPrintableEscapes" value="true"/>
         </module>
-        <module name="AvoidStarImport"/>
+        <!--        <module name="AvoidStarImport"/>-->
         <module name="OneTopLevelClass"/>
         <module name="NoLineWrap">
             <property name="tokens" value="PACKAGE_DEF, IMPORT, STATIC_IMPORT"/>
@@ -251,7 +251,7 @@
         <!-- 变量名称不允许连续大写,遵循驼峰命名规范。允许连续大写-->
         <module name="AbbreviationAsWordInName">
             <property name="ignoreFinal" value="false"/>
-<!--            <property name="allowedAbbreviationLength" value="1"/>-->
+            <!--            <property name="allowedAbbreviationLength" value="1"/>-->
             <property name="tokens"
                       value="CLASS_DEF, INTERFACE_DEF, ENUM_DEF, ANNOTATION_DEF, ANNOTATION_FIELD_DEF,PARAMETER_DEF, VARIABLE_DEF, METHOD_DEF"/>
         </module>

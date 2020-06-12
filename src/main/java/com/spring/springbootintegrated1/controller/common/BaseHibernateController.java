@@ -10,8 +10,10 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.ParameterizedType;
 import java.util.HashMap;
 import java.util.List;
@@ -19,129 +21,86 @@ import java.util.Map;
 
 /**
  * <p>
- * 描述: 公共Controller实现类-Hibernate
- * </p>
- * <p>
- * 创建时间: 2019-11-15 09:45
+ * The common controller implementation class - Hibernate
  * </p>
  *
- * @param <T>
  * @author yanglin
+ * @date 2020-06-12 18:44:20
  */
-public abstract class BaseHIbernateController<T> {
+public abstract class BaseHibernateController<T> {
 
     @Autowired
     private BaseHibernateService<T> baseHibernateService;
 
     /**
      * <p>
-     * 描述: 保存接口
-     * </p>
-     * <p>
-     * 创建时间: 2019-11-14 17:36
+     * Save
      * </p>
      *
-     * @param t 对象数据
-     * @return Map
-     * @throws SecurityException        安全异常
-     * @throws NoSuchFieldException     无属性异常
-     * @throws IllegalAccessException   非法访问异常
-     * @throws IllegalArgumentException 非法论证异常
+     * @param t T
+     * @return org.springframework.http.ResponseEntity ResponseEntity
      * @author yanglin
+     * @date 2020-06-12 18:47:10
      */
     @ApiOperation(value = "保存接口，body参数中有id，是更新；否则是新增（自动生成）")
     @RequestMapping(value = "", method = {RequestMethod.POST, RequestMethod.PUT})
-    public Map<String, Object> save(@RequestBody T t)
-            throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
-        Map<String, Object> result = new HashMap<>(ConstantUtil.RESULT_MAP_INIT_COUNT);
-//        // 新增和保存的用户记录
-//        Field fId = t.getClass().getSuperclass().getDeclaredField("id");
-//        fId.setAccessible(true);
-//        Object idO = fId.get(t);
-//        // 更新数据用户信息
-//        Long userId = ((User) SecurityUtils.getSubject().getPrincipal()).getId();
-//        if (idO == null) {
-//            ParamUtil.putField(t, "createUserId", userId);
-//            ParamUtil.putField(t, "updateUserId", userId);
-//        } else {
-//            ParamUtil.putField(t, "updateUserId", userId);
-//        }
-        result.put("data", baseHibernateService.save(t));
-        return ResultMap.state(result, HttpStatus.OK);
+    public ResponseEntity<T> save(@RequestBody T t) throws SecurityException, IllegalArgumentException {
+        return ResponseEntity.ok(baseHibernateService.save(t));
     }
 
     /**
      * <p>
-     * 描述: 根据id删除
-     * </p>
-     * <p>
-     * 创建时间: 2019-11-15 09:45
+     * Delete By Id
      * </p>
      *
-     * @param id 自增主键
-     * @return Map<String, Object>
-     * @throws IllegalAccessException 非法进入异常
-     * @throws InstantiationException 实例化异常
+     * @param id Primary Key
+     * @return org.springframework.http.ResponseEntity ResponseEntity
      * @author yanglin
+     * @date 2020-06-12 19:03:32
      */
     @SuppressWarnings({"unchecked", "rawtypes"})
     @ApiOperation(value = "根据id删除（自动生成）", httpMethod = "DELETE")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "自增主键", required = true, dataType = "String", paramType = "path")})
     @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
-    public Map<String, Object> delete(@PathVariable Long id) throws Exception {
-        T t = (T) ((Class) ((ParameterizedType) this.getClass().getGenericSuperclass()).getActualTypeArguments()[0])
-                .getDeclaredConstructor().newInstance();
-//        // 更新数据用户信息
-//        Long userId = ((User) SecurityUtils.getSubject().getPrincipal()).getId();
-//        ParamUtil.putField(t, "updateUserId", userId);
+    public ResponseEntity<T> delete(@PathVariable Long id) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+        T t = (T) ((Class) ((ParameterizedType) this.getClass().getGenericSuperclass()).getActualTypeArguments()[0]).getDeclaredConstructor().newInstance();
         ParamUtil.putField(t, "id", id);
-        Map<String, Object> result = new HashMap<>(ConstantUtil.RESULT_MAP_INIT_COUNT);
-        result.put("data", baseHibernateService.delete(t));
-        return ResultMap.state(result, HttpStatus.OK);
+        return ResponseEntity.ok(baseHibernateService.delete(t));
     }
 
     /**
      * <p>
-     * 描述: 根据id对象信息
-     * </p>
-     * <p>
-     * 创建时间: 2019-11-15 09:46
+     * Get Info By Id
      * </p>
      *
-     * @param id 自增主键
-     * @return Map<String, Object>
-     * @throws IllegalAccessException 非法进入异常
-     * @throws InstantiationException 实例化异常
+     * @param id Primary Key
+     * @return org.springframework.http.ResponseEntity ResponseEntity
      * @author yanglin
+     * @date 2020-06-12 19:25:16
      */
     @SuppressWarnings({"unchecked", "rawtypes"})
     @ApiOperation(value = "根据id对象信息（自动生成）", httpMethod = "GET")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "自增主键", required = true, dataType = "String", paramType = "path")})
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
-    public Map<String, Object> info(@PathVariable Long id) throws Exception {
-        T t = (T) ((Class) ((ParameterizedType) this.getClass().getGenericSuperclass()).getActualTypeArguments()[0])
-                .getDeclaredConstructor().newInstance();
+    public ResponseEntity<T> info(@PathVariable Long id) throws Exception {
+        T t = (T) ((Class) ((ParameterizedType) this.getClass().getGenericSuperclass()).getActualTypeArguments()[0]).getDeclaredConstructor().newInstance();
         ParamUtil.putField(t, "id", id);
-        Map<String, Object> result = new HashMap<>(ConstantUtil.RESULT_MAP_INIT_COUNT);
-        result.put("data", baseHibernateService.info(t));
-        return ResultMap.state(result, HttpStatus.OK);
+        return ResponseEntity.ok(baseHibernateService.info(t));
     }
 
     /**
      * <p>
-     * 描述: 根据对象条件查询分页列表
-     * </p>
-     * <p>
-     * 创建时间: 2019-11-15 09:46
+     * Get List By Conditions
      * </p>
      *
-     * @param t    对象数据
-     * @param page 页数
-     * @param size 每页显示数量
-     * @return Map<String, Object>
+     * @param t    T
+     * @param page Integer
+     * @param size Integer
+     * @return java.util.Map<java.lang.String, java.lang.Object>
      * @author yanglin
+     * @date 2020-06-12 19:30:16
      */
     @ApiOperation(value = "根据对象条件查询分页列表（自动生成）", httpMethod = "GET")
     @ApiImplicitParams({

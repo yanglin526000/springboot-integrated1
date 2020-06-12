@@ -1,6 +1,6 @@
 package com.spring.springbootintegrated1.controller;
 
-import com.spring.springbootintegrated1.controller.common.BaseHIbernateController;
+import com.spring.springbootintegrated1.controller.common.BaseHibernateController;
 import com.spring.springbootintegrated1.pojo.User;
 import com.spring.springbootintegrated1.repository.UserRepository;
 import com.spring.springbootintegrated1.utils.ConstantUtil;
@@ -26,7 +26,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/user")
-public class UserController extends BaseHIbernateController<User> {
+public class UserController extends BaseHibernateController<User> {
 
     // 为了减少篇幅就不写service接口了
     @Autowired

@@ -1,6 +1,6 @@
 package com.spring.springbootintegrated1.controller;
 
-import com.spring.springbootintegrated1.controller.common.BaseHIbernateController;
+import com.spring.springbootintegrated1.controller.common.BaseHibernateController;
 import com.spring.springbootintegrated1.pojo.DictionaryInfo;
 import com.spring.springbootintegrated1.service.common.BaseHibernateService;
 import com.spring.springbootintegrated1.utils.ConstantUtil;
@@ -26,13 +26,13 @@ import java.util.Map;
  * <p>
  * 创建时间: 2019-11-15 09:48
  * </p>
- * 
+ *
  * @author yanglin
  */
 @Api(tags = "dictionary-info[字典信息API]")
 @RestController
 @RequestMapping("dictionary-info")
-public class DictionaryInfoController extends BaseHIbernateController<DictionaryInfo> {
+public class DictionaryInfoController extends BaseHibernateController<DictionaryInfo> {
 
     @Autowired
     private BaseHibernateService<DictionaryInfo> baseHibernateService;
@@ -44,15 +44,14 @@ public class DictionaryInfoController extends BaseHIbernateController<Dictionary
      * <p>
      * 创建时间: 2019-11-15 09:49
      * </p>
-     * 
+     *
      * @param code 字典类型代码
      * @return Map<String, Object>
-     * 
      * @author yanglin
      */
     @ApiOperation(value = "根据字典类型代码获取字典信息", httpMethod = "GET")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "code", value = "字典类型代码", required = true, dataType = "String", paramType = "query") })
+            @ApiImplicitParam(name = "code", value = "字典类型代码", required = true, dataType = "String", paramType = "query")})
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public Map<String, Object> list(@RequestParam(value = "code", required = true) String code) {
         Map<String, Object> result = new HashMap<>(ConstantUtil.RESULT_MAP_INIT_COUNT);
