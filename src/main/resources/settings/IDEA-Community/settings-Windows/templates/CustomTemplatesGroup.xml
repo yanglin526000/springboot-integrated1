@@ -1,7 +1,7 @@
 <templateSet group="CustomTemplatesGroup">
   <template name="*" value="*&#10; * &lt;p&gt;&#10; * TODO&#10; * &lt;/p&gt;&#10; *$params$$return$&#10; * @author $author$&#10; * @date $date$&#10; */" description="Method Comment Template" toReformat="false" toShortenFQNames="true">
     <variable name="params" expression="groovyScript(&quot;def result='';def params=\&quot;${_1}\&quot;.replaceAll('[\\\\[|\\\\]|\\\\s]', '').split(',').toList();for(i = 0; i &lt; params.size(); i++) {result+=' * @param ' + params[i] + ((i &lt; params.size() - 1) ? '\\n' : '');};return params[0] == 'null' ? '' : '\\n' + result;&quot;, methodParameters());" defaultValue="" alwaysStopAt="false" />
-    <variable name="return" expression="groovyScript(&quot;def returnType = \&quot;${_1}\&quot;;def result = ' * @return ' + returnType;return (returnType == 'null'|| returnType == 'void' || returnType == '') ? '' : '\\n'+ result;&quot;, methodReturnType());" defaultValue="" alwaysStopAt="false" />
+    <variable name="return" expression="groovyScript(&quot;def returnType = \&quot;${_1}\&quot;;def result = ' * @return ' + returnType;return (returnType == 'null'|| returnType == 'void' || returnType == '') ? '' : '\\n' + result;&quot;, methodReturnType());" defaultValue="" alwaysStopAt="false" />
     <variable name="author" expression="user()" defaultValue="" alwaysStopAt="false" />
     <variable name="date" expression="date(&quot;yyyy-MM-dd HH:mm:ss&quot;)" defaultValue="" alwaysStopAt="false" />
     <context>
