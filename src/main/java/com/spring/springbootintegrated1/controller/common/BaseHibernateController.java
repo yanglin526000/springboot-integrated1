@@ -38,9 +38,10 @@ public abstract class BaseHibernateController<T> {
      * </p>
      *
      * @param t T
-     * @return org.springframework.http.ResponseEntity ResponseEntity
+     * @return org.springframework.http.ResponseEntity<T>
+     * @throws
      * @author yanglin
-     * @date 2020-06-12 18:47:10
+     * @date 2020-06-15 20:32:05
      */
     @ApiOperation(value = "保存接口，body参数中有id，是更新；否则是新增（自动生成）")
     @RequestMapping(value = "", method = {RequestMethod.POST, RequestMethod.PUT})
@@ -54,17 +55,19 @@ public abstract class BaseHibernateController<T> {
      * </p>
      *
      * @param id Primary Key
-     * @return org.springframework.http.ResponseEntity ResponseEntity
+     * @return org.springframework.http.ResponseEntity<T>
      * @author yanglin
-     * @date 2020-06-12 19:03:32
+     * @date 2020-06-15 20:33:17
      */
     @SuppressWarnings({"unchecked", "rawtypes"})
     @ApiOperation(value = "根据id删除（自动生成）", httpMethod = "DELETE")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "自增主键", required = true, dataType = "String", paramType = "path")})
     @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<T> delete(@PathVariable Long id) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
-        T t = (T) ((Class) ((ParameterizedType) this.getClass().getGenericSuperclass()).getActualTypeArguments()[0]).getDeclaredConstructor().newInstance();
+    public ResponseEntity<T> delete(@PathVariable Long id)
+            throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+        T t = (T) ((Class) ((ParameterizedType) this.getClass().getGenericSuperclass()).getActualTypeArguments()[0])
+                .getDeclaredConstructor().newInstance();
         ParamUtil.putField(t, "id", id);
         return ResponseEntity.ok(baseHibernateService.delete(t));
     }
@@ -75,9 +78,9 @@ public abstract class BaseHibernateController<T> {
      * </p>
      *
      * @param id Primary Key
-     * @return org.springframework.http.ResponseEntity ResponseEntity
+     * @return org.springframework.http.ResponseEntity<T>
      * @author yanglin
-     * @date 2020-06-12 19:25:16
+     * @date 2020-06-15 20:37:16
      */
     @SuppressWarnings({"unchecked", "rawtypes"})
     @ApiOperation(value = "根据id对象信息（自动生成）", httpMethod = "GET")
@@ -85,7 +88,8 @@ public abstract class BaseHibernateController<T> {
             @ApiImplicitParam(name = "id", value = "自增主键", required = true, dataType = "String", paramType = "path")})
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
     public ResponseEntity<T> info(@PathVariable Long id) throws Exception {
-        T t = (T) ((Class) ((ParameterizedType) this.getClass().getGenericSuperclass()).getActualTypeArguments()[0]).getDeclaredConstructor().newInstance();
+        T t = (T) ((Class) ((ParameterizedType) this.getClass().getGenericSuperclass()).getActualTypeArguments()[0])
+                .getDeclaredConstructor().newInstance();
         ParamUtil.putField(t, "id", id);
         return ResponseEntity.ok(baseHibernateService.info(t));
     }
